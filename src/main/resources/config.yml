@@ -1,0 +1,4 @@
+config:
+  works: true
+messages:
+  main: "Технические работы!"

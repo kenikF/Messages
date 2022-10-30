@@ -1,0 +1,5 @@
+name: Messages
+version: '${project.version}'
+main: com.kenik.messages.Messages
+commands:
+  messages: {}
