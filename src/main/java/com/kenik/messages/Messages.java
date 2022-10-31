@@ -12,8 +12,6 @@ public final class Messages extends JavaPlugin {
     @Override
     public void onEnable() {
         if(getConfig().getBoolean("config.works")) {
-            Bukkit.getLogger().info("Я включился! Плагин был разработан kenik#6291");
-
             // config
             saveDefaultConfig();
 
@@ -24,23 +22,24 @@ public final class Messages extends JavaPlugin {
                     Bukkit.broadcastMessage(getConfig().getString("messages.main"));
                 }
             };
-            bukkitRunnable.runTaskLater(this, 3600);
+            int delay = getConfig().getInt("config.cooldown")*20;
+            bukkitRunnable.runTaskLater(this, delay);
 
             // commands
             getCommand("messages").setExecutor(new CommandExecutor() {
                 @Override
                 public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
                     if(args.length == 0) {
-                        sender.sendMessage("Для перезагрузки конфига используйте: /messages reload");
+                        sender.sendMessage("To reload the config use: /messages reload");
                         return true;
                     }
 
                     if(args[0].equalsIgnoreCase("reload")) {
                         reloadConfig();
-                        sender.sendMessage("Вы успешно перезагрузили конфиг.");
+                        sender.sendMessage("You have successfully reloaded the config.");
                         return true;
                     } else {
-                        sender.sendMessage("Для перезагрузки конфига используйте: /messages reload");
+                        sender.sendMessage("To reload the config use: /messages reload");
                         return true;
                     }
                 }
@@ -52,6 +51,6 @@ public final class Messages extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        Bukkit.getLogger().info("Я выключен в конфиге и поэтому я не включился! Плагин был разработан kenik#6291");
+        Bukkit.getLogger().info("I'm turned off in the config and that's why I didn't turn on!");
     }
 }

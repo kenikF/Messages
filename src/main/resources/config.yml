@@ -1,4 +1,5 @@
 config:
-  works: true
+  works: true # If false, the plugin will be disabled on server startup
+  delay: 3600 # in secounds
 messages:
-  main: "Технические работы!"
+  main: "Message"
