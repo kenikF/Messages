@@ -22,7 +22,7 @@ public final class Messages extends JavaPlugin {
                     Bukkit.broadcastMessage(getConfig().getString("messages.main"));
                 }
             };
-            int delay = getConfig().getInt("config.cooldown")*20;
+            int delay = getConfig().getInt("config.delay")*20;
             bukkitRunnable.runTaskLater(this, delay);
 
             // commands
